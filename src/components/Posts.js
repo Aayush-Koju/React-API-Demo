@@ -7,12 +7,24 @@ export default function Posts() {
   useEffect(() => {
     getPosts()
       .then((result) => {
-        console.log(result);
+        setPosts(result.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   }, []);
 
-  return <></>;
+  return (
+    <div>
+      <h1>Posts</h1>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
