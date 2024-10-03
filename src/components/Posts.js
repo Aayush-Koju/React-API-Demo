@@ -5,7 +5,13 @@ export default function Posts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    console.log("Load Posts");
+    getPosts()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return <></>;
